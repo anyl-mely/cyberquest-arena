@@ -1,0 +1,13 @@
+# Dependencies (Chuẩn bị sẵn cho Chặng React & Node.js)
+node_modules/
+dist/
+build/
+
+# Environment variables (Chuẩn bị cho Chặng Backend & AI API)
+.env
+.env.local
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
