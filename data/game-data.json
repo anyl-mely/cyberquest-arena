@@ -1,0 +1,56 @@
+{
+    "stages": [
+        {
+            "stage": 1,
+            "title": "Tầng 1: Cổng Ngục Tối",
+            "boss": {
+                "name": "Shadow Golem",
+                "avatar": "👾",
+                "maxHp": 150,
+                "atk": 20,
+                "shield": 5,
+                "rewardGold": 45
+            }
+        },
+        {
+            "stage": 2,
+            "title": "Tầng 2: Lò Phản Ứng Ngầm",
+            "boss": {
+                "name": "Cyber Drake",
+                "avatar": "🐉",
+                "maxHp": 210,
+                "atk": 28,
+                "shield": 10,
+                "rewardGold": 70
+            }
+        },
+        {
+            "stage": 3,
+            "title": "Tầng 3: Ngai Vàng Hư Không",
+            "boss": {
+                "name": "Void Overlord",
+                "avatar": "👹",
+                "maxHp": 300,
+                "atk": 35,
+                "shield": 15,
+                "rewardGold": 150
+            }
+        }
+    ],
+    "initialInventory": [
+        {
+            "id": "hp_potion",
+            "name": "🧪 Bình Máu Nhỏ (+40 HP)",
+            "qty": 2,
+            "type": "heal",
+            "value": 40
+        },
+        {
+            "id": "mp_battery",
+            "name": "🔋 Pin Năng Lượng (+30 MP)",
+            "qty": 1,
+            "type": "mana",
+            "value": 30
+        }
+    ]
+}
