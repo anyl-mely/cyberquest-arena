@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberQuest Arena — Tactical RPG</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- 1. TOP HUD BAR -->
+    <header class="hud-header">
+        <div class="brand">
+            <span class="brand-badge">CQ</span>
+            <h1>CyberQuest Arena</h1>
+        </div>
+
+        <div class="stage-info">
+            <span class="stage-label">ẢI HIỆN TẠI</span>
+            <strong id="stage-number">Tầng 1: Cổng Ngục Tối</strong>
+        </div>
+
+        <div class="player-resources">
+            <div class="resource-item gold-box">
+                <span>💰 Vàng:</span>
+                <strong id="player-gold">120</strong>
+            </div>
+            <button id="btn-shop" class="btn-secondary" type="button">🛒 Cửa Hàng</button>
+        </div>
+    </header>
+
+    <!-- 2. MAIN WORKSPACE (GRID LAYOUT) -->
+    <main class="arena-grid">
+        <!-- CỘT TRÁI: SÀN ĐẤU & BẢNG KỸ NĂNG -->
+        <section class="combat-zone" aria-label="Khu vực chiến đấu">
+
+            <!-- Sàn đối kháng Hero vs Boss -->
+            <div class="battlefield">
+                <!-- Thẻ Chiến Binh (Hero) -->
+                <article class="fighter-card hero-card">
+                    <div class="fighter-header">
+                        <div>
+                            <span class="role-tag hero-tag">CHIẾN BINH</span>
+                            <h2 id="hero-name">Cyber Knight</h2>
+                        </div>
+                        <span class="level-badge" id="hero-level">Lv.1</span>
+                    </div>
+
+                    <div class="avatar-box hero-avatar">⚔️</div>
+
+                    <div class="stat-group">
+                        <div class="stat-label">
+                            <span>HP (Máu)</span>
+                            <span id="hero-hp-text">100 / 100</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="hero-hp-bar" class="progress-fill hp-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-group">
+                        <div class="stat-label">
+                            <span>MP (Năng lượng)</span>
+                            <span id="hero-mp-text">50 / 50</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="hero-mp-bar" class="progress-fill mp-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="fighter-footer">
+                        <span>🛡️ Giáp: <strong id="hero-shield">10</strong></span>
+                        <span>⚡ Công: <strong id="hero-atk">25</strong></span>
+                    </div>
+                </article>
+
+                <!-- Trung tâm báo lượt & Đồng hồ đếm ngược -->
+                <div class="turn-center">
+                    <div class="turn-badge" id="turn-status">LƯỢT CỦA BẠN</div>
+                    <div class="timer-circle" id="turn-timer">15s</div>
+                    <span class="vs-text">VS</span>
+                </div>
+
+                <!-- Thẻ Quái Vật (Boss) -->
+                <article class="fighter-card boss-card">
+                    <div class="fighter-header">
+                        <div>
+                            <span class="role-tag boss-tag">QUÁI VẬT</span>
+                            <h2 id="boss-name">Shadow Golem</h2>
+                        </div>
+                        <span class="intent-badge" id="boss-intent">Sắp đánh: 20 ST</span>
+                    </div>
+
+                    <div class="avatar-box boss-avatar">👾</div>
+
+                    <div class="stat-group">
+                        <div class="stat-label">
+                            <span>HP (Máu)</span>
+                            <span id="boss-hp-text">150 / 150</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="boss-hp-bar" class="progress-fill boss-hp-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="fighter-footer">
+                        <span>🛡️ Giáp: <strong id="boss-shield">5</strong></span>
+                        <span>🏆 Thưởng: <strong id="boss-reward">+45 Vàng</strong></span>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Bảng điều khiển Thẻ Kỹ Năng (Skill Deck) -->
+            <section class="skill-panel" aria-label="Bảng điều khiển kỹ năng">
+                <div class="panel-header">
+                    <h3>Bộ Thẻ Kỹ Năng (Chọn 1 hành động trong lượt)</h3>
+                    <button id="btn-end-turn" class="btn-outline" type="button">Bỏ lượt (+15 MP)</button>
+                </div>
+
+                <div class="skill-deck" id="skill-deck">
+                    <button class="skill-card" data-skill-id="strike" type="button">
+                        <span class="skill-cost">0 MP</span>
+                        <strong>⚔️ Trảm Kích</strong>
+                        <p>Gây 25 sát thương vật lý cơ bản.</p>
+                    </button>
+
+                    <button class="skill-card" data-skill-id="plasma" type="button">
+                        <span class="skill-cost">20 MP</span>
+                        <strong>⚡ Pháo Plasma</strong>
+                        <p>Gây 45 sát thương xuyên giáp.</p>
+                    </button>
+
+                    <button class="skill-card" data-skill-id="shield" type="button">
+                        <span class="skill-cost">15 MP</span>
+                        <strong>🛡️ Khiên Từ Trường</strong>
+                        <p>Tăng thêm 20 Giáp chặn đòn.</p>
+                    </button>
+
+                    <button class="skill-card" data-skill-id="heal" type="button">
+                        <span class="skill-cost">25 MP</span>
+                        <strong>💚 Tái Tạo Nano</strong>
+                        <p>Hồi phục ngay 35 HP cho bản thân.</p>
+                    </button>
+                </div>
+            </section>
+        </section>
+
+        <!-- CỘT PHẢI: TÚI ĐỒ & NHẬT KÝ CHIẾN ĐẤU -->
+        <aside class="sidebar-zone">
+            <!-- Túi đồ (Inventory) -->
+            <section class="side-card">
+                <h3>🎒 Kho Vật Phẩm Nhanh</h3>
+                <div class="inventory-grid" id="inventory-list">
+                    <div class="inv-slot">🧪 Bình Máu Nhỏ (x2)</div>
+                    <div class="inv-slot">🔋 Pin Năng Lượng (x1)</div>
+                    <div class="inv-slot empty-slot">Ô trống</div>
+                    <div class="inv-slot empty-slot">Ô trống</div>
+                </div>
+            </section>
+
+            <!-- Nhật ký trận đấu (Combat Log) -->
+            <section class="side-card log-card">
+                <h3>📜 Nhật Ký Trận Đấu</h3>
+                <ul class="combat-log" id="combat-log">
+                    <li class="log-entry system-log">[Hệ thống] Trận đấu bắt đầu tại Tầng 1!</li>
+                    <li class="log-entry boss-log">[Shadow Golem] Đang tụ lực chuẩn bị tấn công (20 ST).</li>
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
